@@ -17,16 +17,20 @@ export default {
     },
     methods: {
         addTodo: function() {
-            // 여기서 this.는 TodoInput 컴포넌트를 가르킨다. 그렇기 때문에 data.nowTodoItem의 값을 바로 가르킬 수 있음
-            console.log(this.newTodoItem); 
-
             if (this.newTodoItem !== '') {
+            
+              // >>> App.vue로 옮긴다
               // 저장하는 로직 > chorme > application > localstorage 에서 확인 
-              var obj = {
-                completed: false,
-                item: this.newTodoItem
-              }
-              localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+              // var obj = {
+              //   completed: false,
+              //   item: this.newTodoItem
+              // }
+              // localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+              // <<<
+
+              // this.$emit('이벤트 이름', 보낼 데이터, ...);
+              this.$emit('addTodoItem', this.newTodoItem);
+
               // input box 초기화
               this.clearInput();
             }

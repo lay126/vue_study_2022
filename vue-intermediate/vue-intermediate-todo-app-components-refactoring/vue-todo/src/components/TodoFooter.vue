@@ -8,6 +8,7 @@
 export default {
   methods: {
     clearTodo: function() {
+      console.log('nonono')
       this.$emit('clearAll');
     }
   }

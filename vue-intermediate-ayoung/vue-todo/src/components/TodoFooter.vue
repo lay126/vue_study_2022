@@ -1,8 +1,6 @@
 <template>
   <div class="clearAllContainer">
-      <span class="clearAllBtn" v-on:click="clearTodo">
-        Clear All
-      </span>
+    <span class="clearAllBtn" v-on:click="clearTodo">Clear All</span>
   </div>
 </template>
 
@@ -10,7 +8,7 @@
 export default {
   methods: {
     clearTodo: function() {
-      localStorage.clear();
+      this.$emit('clearAll');
     }
   }
 }
@@ -30,4 +28,3 @@ export default {
   display: block;
 }
 </style>
-yle>
