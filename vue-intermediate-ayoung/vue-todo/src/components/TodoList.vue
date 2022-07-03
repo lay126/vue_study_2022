@@ -1,18 +1,18 @@
 <template>
   <div>
-      <ul>
-        <!-- props로 받아오는 데이터 명으로 변경 -->
-        <!-- <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow"> -->
-        <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
-          <i class="checkBtn fa-solid fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" 
-            v-on:click="toggleComplete(todoItem, index)"/>
-          <div v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</div>
-          <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
-            <i class="fa-solid fa-trash"/>
-          </span>
-        </li>
-
-      </ul>
+    <!-- list transition 추가. ul tag 자체는 제거하고 속성 tag를 ul로 변경 -->
+    <transition-group name="list" tag="ul"> 
+      <!-- props로 받아오는 데이터 명으로 변경 -->
+      <!-- <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow"> -->
+      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
+        <i class="checkBtn fa-solid fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" 
+          v-on:click="toggleComplete(todoItem, index)"/>
+        <div v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</div>
+        <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
+          <i class="fa-solid fa-trash"/>
+        </span>
+      </li>
+    </transition-group>
   </div>
 </template>
 
@@ -95,9 +95,9 @@ li {
   color: #de4343;
 }
 
-/* transition css */
+/* 리스트에 대한 transition css */
 .list-enter-active, .list-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
