@@ -8,6 +8,14 @@
 ### component의 분료
 - presenter component (표현만 하는)
 - container component (App - 데이터 조작에 관련된, 비즈니스 조직이 담긴)
+- 
+- React. Container-Presenter Pattern (데이터처리와 데이터출력을 분리) - https://velog.io/@dolarge/React-Container-Presenter-%ED%8C%A8%ED%84%B4
+- Container에서는 API Request, Exception Error, state변경 / Presenter에서는 props, UI 표현
+- Container에서 처리하거나 받아온 데이터들을 Presenter 컴포넌트에 props로 넘긴다
+
++ React 패턴
++ https://cocobi.tistory.com/120
+
 
 ### 데이터 구조 개선 (TodoList)
 1) TodoList.vue의 데이터와 created의 소스 부분을 App.vue로 모두 이동시킨다.
@@ -29,21 +37,24 @@
 
 ### 아이템 완료하는 부분을 옮기기 (TodoList 남은 이벤트)
 상동.
-* 컴포넌트 간의 경계를 명확히 하기 : 데이터를 왔다갔다 하면서 반영하고 수정하지 말고, 액션을 받아 현재 위치의 데이터를 수정할 것. (불필요한 데이터 전달 반영 줄이기)
+* 컴포넌트 간의 경계를 명확히 하기 : 
+  데이터를 통으로 왔다갔다 하면서 반영하고 수정하지 말고, 액션을 받아 현재 위치의 데이터를 수정할 것. (불필요한 데이터 전달 반영 줄이기)
 
 ### 아이템 전체 삭제하기 (TodoFooter)
 상동.
 
+
 ### 리펙토링 정리
-#### App.vue 
+#### App.vue (Container Component)
 데이터와 모든 메소드 처리를 App componet로 집약. (데이터 조작 - 비지니스 로직)
 기존 다른 Component에 흩어져 있던 데이터들이 모두 동일한 속성이며, 같은 데이터를 다루므로, 하나의 컴포넌트에 집약시킴. 
 재사용성을 올리고, 중복성을 낮춤. 데이터의 추적이 유용함.(중앙 관리식)
 -> Container Component
 
-#### 다른 vue 파일들
+#### 다른 vue 파일들 (presentation component)
 데이터를 보여주기만 하는 viewer에 가까운 컴포넌트들. 여기서는 데이터의 변경을 요청만 한다.
 -> presentation component
+
 
 
 
