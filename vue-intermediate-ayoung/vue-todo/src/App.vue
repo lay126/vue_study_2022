@@ -18,15 +18,26 @@ import TodoFooter from './components/TodoFooter.vue'
 export default {
   name: 'App',
   // >>> TodoList.vue에서 들고 옴. 
-  data: function() {
+  data() { // 여기서도 : function 을 없앰.
     return {
       todoItems: []
     }
   },
   methods: {
-    // TodoInput.vue에서 추가했을때 연결되어 실행 될 이벤트 
-    addOneItem: function(todoItem) {
-      var obj = {
+    // TodoInput.vue에서 추가했을때 연결되어 실행 될 이벤트
+    // 속성 메소드
+    // addOneItem: function(todoItem) { 
+    //   const obj = { // var에서 변경
+    //     completed: false,
+    //     item: todoItem
+    //   }
+    //   localStorage.setItem(todoItem, JSON.stringify(obj));
+
+    //   // 바로 새로고침되게 설정
+    //   this.todoItems.push(obj);
+    // }, 
+    addOneItem(todoItem) { 
+      const obj = { // var에서 변경
         completed: false,
         item: todoItem
       }
@@ -35,13 +46,13 @@ export default {
       // 바로 새로고침되게 설정
       this.todoItems.push(obj);
     }, 
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       console.log(todoItem, index);
       // 오브젝트(todoItem)이 아닌 특정 문자열에 접근하여 지우도록 수정함.
       localStorage.removeItem(todoItem.item); // 로컬 스토리지에서 지우기 
       this.todoItems.splice(index, 1); // 화면에서 지우기
     },
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       // // 화면에서 변경 (상태 변경)
       // todoItem.completed = !todoItem.completed
       // // 로컬 스토리지에 반영
@@ -53,14 +64,14 @@ export default {
       // 이벤트 버스를 올리고, props를 내리면서 컴포넌트 간의 경계를 명확히 한다.
       this.todoItems[index].completed = !this.todoItems[index].completed
     },
-    clearAllItems: function() {
+    clearAllItems() {
       localStorage.clear();
       this.todoItems = [];
     }
   },
-  created: function() { // 인스턴스가 생성되자마자 호출되는 메소드
+  created() { // 인스턴스가 생성되자마자 호출되는 메소드 // 여기서도 : function 을 없앰.
     if(localStorage.length > 0) {
-      for(var i = 0; i < localStorage.length; i++ ){
+      for(let i = 0; i < localStorage.length; i++ ){ //반복문은 let으로 사용
         this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
       }
     }
@@ -68,10 +79,11 @@ export default {
   // <<<
   components: {
     // 컴포넌트 태그명 : 컴포넌트 내용
-    'TodoHeader' : TodoHeader,
-    'TodoInput' : TodoInput,
-    'TodoList' : TodoList,
-    'TodoFooter' : TodoFooter
+    // 'TodoHeader' : TodoHeader, // 향상된 객체 리터럴 적용 전.
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
   }
 }
 </script>

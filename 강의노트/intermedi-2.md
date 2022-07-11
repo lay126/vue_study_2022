@@ -5,7 +5,7 @@
 -> 개선 방법 : 전체적인 컴포넌트에서 하나의 데이터만(App에 있는) 바라보도록 개선한다. 
    이 데이터를 emit, props로 만지기만 함. (intermedi-2-img-2.jpeg)
 
-### component의 분료
+### component의 분리
 - presenter component (표현만 하는)
 - container component (App - 데이터 조작에 관련된, 비즈니스 조직이 담긴)
 - 
@@ -57,14 +57,13 @@
 
 
 
-
 ## 4강. 사용자 경험성 개선 (트랜지션, 애니메이션 추가)
 
 ### Modal 사용하기 - 아무런 값이 입력되지 않았을때, alert을 띄우기 
 - 모달 컴포넌트 : https://kr.vuejs.org/v2/examples/modal.html
 - 미세한 effect 등을 사용할 수 있음
 
-- x-template : 템플릿을 모듈화 할때 사용한다.
+- x-template : 템플릿을 모듈화 할때 사용한다. -> 스크립트 내부에 ㅑㅇ로 선언
 - js 내부에 template로 지정된 곳에 정의된 템플릿이 실제로 들어가서 동작하는 형태.
 - 재사용성을 위해 이를 컴포넌트로 선언하여 모듈화 한다.
 
@@ -118,7 +117,7 @@ ERROR in [eslint]
 
 
 ## 강의 중간 정리
-1) 뷰 cli를 이용한 프로젝트 구성 방법 : 당시엔 안정적 저번인 2.9버전을 사용하여 강의는 구현함. 나는 5버전을 사용.
+1) 뷰 cli를 이용한 프로젝트 구성 방법 : 당시엔 안정적 버전인 2.9버전을 사용하여 강의는 구현함. 나는 5버전을 사용.
 2) 컴포넌트 기반 설계 방법 : container component, trasition component등 기능별 분리하여 설계하는 방법.
 3) 컴포넌트 구조화 및 컴포넌트 통신 방법 : props, emit 등을 사용하여 리펙토링을 통해 구현.
 

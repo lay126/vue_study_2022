@@ -12,7 +12,7 @@
     <CommonModal v-if="showModal" @close="showModal = false"> 
       <!-- 여기에 새로 재정의 할 부분을 작성한다. 정의된 내용으로, modal에 slot:header로 지정된 부분의 내용이 변경된다. -->
       <!-- 사용 방법이 변경 되었다 -->
-      <template v-slot:header> 
+      <template v-slot:header > 
         <span class=".modal-header">경고장을 드립니다.</span> 
         <!-- 축약형 : @click == v-on:click -->
         <i class="closeModalBtn fa-solid fa-xmark" @click="showModal = false"/> 
@@ -30,14 +30,14 @@
 import CommonModal from './common/CommonModal.vue'
 
 export default {
-    data: function() {
+    data() {
         return {
           newTodoItem: "",
           showModal: false
         }
     },
     methods: {
-        addTodo: function() {
+        addTodo() {
             if (this.newTodoItem !== '') {
             
               // >>> App.vue로 옮긴다
@@ -59,13 +59,14 @@ export default {
               this.showModal = !this.showModal;
             }
         },
-        clearInput: function() {
+        clearInput() {
             this.newTodoItem = '';
         }
     },
     // modal 사용을 위한 추가
     components: {
-      'CommonModal': CommonModal
+      // 'CommonModal': CommonModal
+      CommonModal // 축약형 사용.
     }
 }
 </script>
