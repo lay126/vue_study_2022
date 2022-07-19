@@ -50,7 +50,10 @@ export default {
               // <<<
 
               // this.$emit('이벤트 이름', 보낼 데이터, ...);
-              this.$emit('addTodoItem', this.newTodoItem);
+              // this.$emit('addTodoItem', this.newTodoItem);
+              
+              // vuex
+              this.$store.commit('addOneItem', this.newTodoItem)
 
               // input box 초기화
               this.clearInput();
